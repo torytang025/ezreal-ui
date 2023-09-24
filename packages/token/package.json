@@ -1,0 +1,17 @@
+{
+  "name": "@prism-ui/token",
+  "version": "0.0.0",
+  "author": "torytang <torytang.025@gmail.com> (https://torytang.com)",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

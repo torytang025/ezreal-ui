@@ -5,8 +5,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "./src/index.ts"),
-      name: "PrismUI",
-      fileName: "prism-ui",
+      name: "PrismUIToken",
+      fileName: "index",
     },
   },
 });
