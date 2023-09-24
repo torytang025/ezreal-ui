@@ -1,3 +1,3 @@
-export default function PrismUI() {
+export default function ezrealUI() {
   console.log("hello world");
 }

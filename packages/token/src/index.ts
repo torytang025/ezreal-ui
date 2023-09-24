@@ -1,3 +1,3 @@
-export default function PrismUIToken() {
+export default function ezrealUIToken() {
   console.log("hello world");
 }
