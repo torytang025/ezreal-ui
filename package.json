@@ -9,5 +9,8 @@
   "scripts": {
     "build": "pnpm --filter './packages/**' build",
     "release": "pnpm --filter './packages/**' publish"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
