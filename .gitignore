@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# for mac
+.DS_Store
+node_modules.nosync
