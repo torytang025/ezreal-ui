@@ -1,12 +1,29 @@
-import { PropsWithChildren, forwardRef } from "react";
+import cs from "classnames";
+import React, { forwardRef, useContext } from "react";
+import { ConfigContext } from "../ConfigContext";
 import { ButtonProps } from "./interface";
 
-function Button(
-  props: PropsWithChildren<ButtonProps>,
-  ref: React.LegacyRef<HTMLButtonElement>
-) {
-  const { children, type } = props;
-  return <button ref={ref}>{children}</button>;
+import "./index.less";
+
+function Button(props: ButtonProps, ref: React.LegacyRef<HTMLButtonElement>) {
+  const { getPrefixCls } = useContext(ConfigContext);
+  const { children, type, className } = props;
+
+  const prefix = getPrefixCls("button");
+
+  const classNames = cs(
+    prefix,
+    {
+      [`${prefix}-${type}`]: type,
+    },
+    className
+  );
+
+  return (
+    <button ref={ref} className={classNames}>
+      {children}
+    </button>
+  );
 }
 
 const ButtonRef = forwardRef(Button);
