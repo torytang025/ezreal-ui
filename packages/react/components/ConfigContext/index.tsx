@@ -1,6 +1,6 @@
 import { omit } from "lodash-es";
 import { createContext, useEffect } from "react";
-import useMergeProps from "../../utils/hooks/use-merge-props";
+import useMergeProps from "../utils/hooks/use-merge-props";
 import { ConfigContextProps } from "./interface";
 
 function setTheme(theme: ConfigContextProps["theme"]) {

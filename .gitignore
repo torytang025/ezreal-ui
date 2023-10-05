@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# for mac
+.DS_Store
+node_modules.nosync
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -23,6 +27,5 @@ dist-ssr
 *.sln
 *.sw?
 
-# for mac
-.DS_Store
-node_modules.nosync
+
+tsconfig.tsbuildinfo
