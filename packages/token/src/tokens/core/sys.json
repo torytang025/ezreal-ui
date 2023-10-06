@@ -1,0 +1,174 @@
+{
+  "sys": {
+    "color": {
+      "light": {
+        "primary": {
+          "value": "{ref.palette.primary.primary40}",
+          "type": "color"
+        },
+        "on-primary": {
+          "value": "{ref.palette.primary.primary100}",
+          "type": "color"
+        },
+        "primary-container": {
+          "value": "{ref.palette.primary.primary90}",
+          "type": "color"
+        },
+        "on-primary-container": {
+          "value": "{ref.palette.primary.primary10}",
+          "type": "color"
+        }
+      },
+      "dark": {
+        "primary": {
+          "value": "{ref.palette.primary.primary80}",
+          "type": "color"
+        },
+        "on-primary": {
+          "value": "{ref.palette.primary.primary20}",
+          "type": "color"
+        },
+        "primary-container": {
+          "value": "{ref.palette.primary.primary30}",
+          "type": "color"
+        },
+        "on-primary-container": {
+          "value": "{ref.palette.primary.primary90}",
+          "type": "color"
+        }
+      }
+    },
+    "elevation": {
+      "light": {
+        "high": {
+          "value": [
+            {
+              "color": "#0000001f",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "1",
+              "blur": "24",
+              "spread": "0"
+            },
+            {
+              "color": "#0000000f",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "0",
+              "blur": "40",
+              "spread": "3"
+            }
+          ],
+          "type": "boxShadow"
+        },
+        "medium": {
+          "value": [
+            {
+              "color": "#1b1c1f1a",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "1",
+              "blur": "16",
+              "spread": "2"
+            },
+            {
+              "color": "#1b1c1f0a",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "0",
+              "blur": "1",
+              "spread": "0"
+            }
+          ],
+          "type": "boxShadow"
+        },
+        "low": {
+          "value": [
+            {
+              "color": "#0000000a",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "1",
+              "blur": "16",
+              "spread": "1"
+            },
+            {
+              "color": "#00000014",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "0",
+              "blur": "1",
+              "spread": "0"
+            }
+          ],
+          "type": "boxShadow"
+        }
+      },
+      "dark": {
+        "high": {
+          "value": [
+            {
+              "color": "#0000004d",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "1",
+              "blur": "3",
+              "spread": "0"
+            },
+            {
+              "color": "#00000026",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "0",
+              "blur": "8",
+              "spread": "3"
+            }
+          ],
+          "type": "boxShadow"
+        },
+        "medium": {
+          "value": [
+            {
+              "color": "#00000014",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "1",
+              "blur": "12",
+              "spread": "0"
+            },
+            {
+              "color": "#0000001f",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "0",
+              "blur": "1",
+              "spread": "2"
+            }
+          ],
+          "type": "boxShadow"
+        },
+        "low": {
+          "value": [
+            {
+              "color": "#0000000a",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "1",
+              "blur": "24",
+              "spread": "0"
+            },
+            {
+              "color": "#0000003d",
+              "type": "dropShadow",
+              "x": "0",
+              "y": "0",
+              "blur": "2",
+              "spread": "1"
+            }
+          ],
+          "type": "boxShadow"
+        }
+      }
+    }
+  }
+}

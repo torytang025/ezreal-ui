@@ -1,0 +1,20 @@
+{
+  "button": {
+    "filled": {
+      "color": {
+        "text": {
+          "default": {
+            "value": "{sys.color.light.on-primary}",
+            "type": "color"
+          }
+        },
+        "bg": {
+          "default": {
+            "value": "{sys.color.light.primary}",
+            "type": "color"
+          }
+        }
+      }
+    }
+  }
+}

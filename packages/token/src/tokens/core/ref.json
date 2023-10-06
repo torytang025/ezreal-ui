@@ -1,0 +1,80 @@
+{
+  "ref": {
+    "palette": {
+      "primary": {
+        "primary0": {
+          "value": "#000000",
+          "type": "color"
+        },
+        "primary5": {
+          "value": "#000b3a",
+          "type": "color"
+        },
+        "primary10": {
+          "value": "#001453",
+          "type": "color"
+        },
+        "primary15": {
+          "value": "#001c6c",
+          "type": "color"
+        },
+        "primary20": {
+          "value": "#002585",
+          "type": "color"
+        },
+        "primary25": {
+          "value": "#002e9f",
+          "type": "color"
+        },
+        "primary30": {
+          "value": "#0037b9",
+          "type": "color"
+        },
+        "primary35": {
+          "value": "#0040d5",
+          "type": "color"
+        },
+        "primary40": {
+          "value": "#1d4ee3",
+          "type": "color"
+        },
+        "primary50": {
+          "value": "#416afc",
+          "type": "color"
+        },
+        "primary60": {
+          "value": "#6b89ff",
+          "type": "color"
+        },
+        "primary70": {
+          "value": "#92a6ff",
+          "type": "color"
+        },
+        "primary80": {
+          "value": "#b8c4ff",
+          "type": "color"
+        },
+        "primary90": {
+          "value": "#dde1ff",
+          "type": "color"
+        },
+        "primary95": {
+          "value": "#efefff",
+          "type": "color"
+        },
+        "primary98": {
+          "value": "#fbf8ff",
+          "type": "color"
+        },
+        "primary99": {
+          "value": "#fefbff",
+          "type": "color"
+        },
+        "primary100": {
+          "value": "#ffffff",
+          "type": "color"
+        }
+      }
+    }
+  }
+}
