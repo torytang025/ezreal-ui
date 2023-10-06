@@ -2,14 +2,25 @@
   "name": "@ezreal-ui/token",
   "version": "0.0.0",
   "author": "torytang <torytang.025@gmail.com> (https://torytang.com)",
+  "type": "module",
+  "exports": {
+    "css": {
+      "import": "./dist/style.css"
+    }
+  },
+  "files": [
+    "./dist/style.css"
+  ],
   "scripts": {
-    "build:token": "ts-node --esm ./src/scripts/style-dictionary.ts"
+    "build": "pnpm run build:token && vite build",
+    "build:token": "rm -rf ./src/style/components/* ./src/style/theme/* & ts-node --esm ./src/scripts/style-dictionary.ts"
   },
   "devDependencies": {
     "@types/node": "^20.8.2",
     "@types/tinycolor2": "^1.4.4",
     "change-case": "^4.1.2",
     "glob": "^10.3.10",
+    "less": "^4.2.0",
     "style-dictionary": "^3.8.0",
     "tinycolor2": "^1.6.0",
     "ts-node": "^10.9.1",
@@ -18,6 +29,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "type": "module"
+  }
 }

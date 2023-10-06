@@ -1,5 +1,4 @@
-/**
- * 
+export const WARNING_FILE_HEADER = `
 ----------
 Copyright © 2023 Ezreal Design
 !!! THIS FILE WAS AUTOMATICALLY GENERATED !!!
@@ -7,12 +6,4 @@ Copyright © 2023 Ezreal Design
 Design system display name: Ezreal Design
 Design system version: v0.1
 ----------
-
- */
-
-
-
-body {
-  --ezreal-button-filled-color-bg-default: var(--ezreal-sys-color-primary);
-  --ezreal-button-filled-color-text-default: var(--ezreal-sys-color-on-primary);
-}
+`;

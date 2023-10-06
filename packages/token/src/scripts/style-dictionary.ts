@@ -4,12 +4,14 @@ import path from "path";
 import StyleDictionary, { Config } from "style-dictionary";
 import tinycolor from "tinycolor2";
 import * as url from "url";
-import { formattedVariables } from "./formatHelpers/formattedVariables.ts";
+import { WARNING_FILE_HEADER } from "./utils/const.ts";
+import { formattedVariables } from "./utils/formattedVariables.ts";
+import { generatIndexFile } from "./utils/generateIndexFile.ts";
 import {
   componentFormatter,
   sysColorFormatter,
   sysElevationFormatter,
-} from "./formatHelpers/tokenFormatter.ts";
+} from "./utils/tokenFormatter.ts";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const tokenPath = path.resolve(__dirname, "../tokens");
@@ -43,14 +45,7 @@ const dimensionTokenArr = [
 StyleDictionary.registerFileHeader({
   name: "appendCustomHeader",
   fileHeader: () => {
-    return [
-      `Copyright © 2023 Ezreal Design`,
-      ``,
-      `!!! THIS FILE WAS AUTOMATICALLY GENERATED !!!`,
-      `!!! DO NOT MODIFY IT BY HAND !!!`,
-      `Design system display name: Ezreal Design`,
-      `Design system version: v0.1`,
-    ];
+    return [WARNING_FILE_HEADER];
   },
 });
 
@@ -471,3 +466,6 @@ componentTokenFiles.map(function (file) {
   const SD = StyleDictionary.extend(getCompStyleDictionaryConfig(file));
   SD.buildAllPlatforms();
 });
+
+// create index.less and export all less files
+generatIndexFile();
