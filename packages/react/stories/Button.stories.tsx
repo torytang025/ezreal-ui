@@ -8,7 +8,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     type: {
       control: "inline-radio",
-      options: ["primary", "outlined"],
+      options: ["filled", "outlined"],
     },
   },
 };

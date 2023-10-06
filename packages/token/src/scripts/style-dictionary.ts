@@ -326,7 +326,7 @@ function getThemeStyleDictionaryConfig({
     platforms: {
       css: {
         transforms: DEFAULT_TRANSFORMS,
-        buildPath: "src/style/theme/",
+        buildPath: "dist/theme/",
         files: [
           {
             destination: `${fileName}.less`,
@@ -359,7 +359,7 @@ function getCompStyleDictionaryConfig(themePath: string): Config {
     platforms: {
       css: {
         transforms: DEFAULT_TRANSFORMS,
-        buildPath: "src/style/components/",
+        buildPath: "dist/components/",
         files: [
           {
             destination: `${componentName}.less`,

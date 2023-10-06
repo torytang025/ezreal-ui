@@ -3,17 +3,17 @@
   "version": "0.0.0",
   "author": "torytang <torytang.025@gmail.com> (https://torytang.com)",
   "type": "module",
+  "files": [
+    "./dist/style"
+  ],
   "exports": {
-    "css": {
-      "import": "./dist/style.css"
+    ".": {
+      "import": "./dist/index.less"
     }
   },
-  "files": [
-    "./dist/style.css"
-  ],
   "scripts": {
-    "build": "pnpm run build:token && vite build",
-    "build:token": "rm -rf ./src/style/components/* ./src/style/theme/* & ts-node --esm ./src/scripts/style-dictionary.ts"
+    "build": "pnpm run build:token",
+    "build:token": "rm -rf ./dist/* && ts-node --esm ./src/scripts/style-dictionary.ts"
   },
   "devDependencies": {
     "@types/node": "^20.8.2",
@@ -24,8 +24,7 @@
     "style-dictionary": "^3.8.0",
     "tinycolor2": "^1.6.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "typescript": "^5.0.2"
   },
   "publishConfig": {
     "access": "public"

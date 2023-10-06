@@ -7,7 +7,7 @@ import "./index.less";
 
 function Button(props: ButtonProps, ref: React.LegacyRef<HTMLButtonElement>) {
   const { getPrefixCls } = useContext(ConfigContext);
-  const { children, type, className } = props;
+  const { children, type, className, disabled } = props;
 
   const prefix = getPrefixCls("button");
 
@@ -15,6 +15,8 @@ function Button(props: ButtonProps, ref: React.LegacyRef<HTMLButtonElement>) {
     prefix,
     {
       [`${prefix}-${type}`]: type,
+      [`${prefix}-default`]: !disabled,
+      [`${prefix}-disabled`]: disabled,
     },
     className
   );
@@ -30,7 +32,7 @@ const ButtonRef = forwardRef(Button);
 
 ButtonRef.displayName = "Button";
 ButtonRef.defaultProps = {
-  type: "primary",
+  type: "filled",
 };
 
 export default ButtonRef;

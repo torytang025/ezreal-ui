@@ -15,6 +15,22 @@
           }
         }
       }
+    },
+    "outlined": {
+      "color": {
+        "text": {
+          "default": {
+            "value": "{sys.color.light.primary}",
+            "type": "color"
+          }
+        },
+        "bg": {
+          "default": {
+            "value": "transparent",
+            "type": "color"
+          }
+        }
+      }
     }
   }
 }
