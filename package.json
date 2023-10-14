@@ -1,6 +1,10 @@
 {
   "name": "ezreal-ui",
   "private": "true",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/torytang025/ezreal-ui.git"
+  },
   "author": {
     "name": "torytang",
     "email": "torytang.025@gmail.com",
@@ -10,10 +14,10 @@
     "build": "pnpm --filter './packages/**' build",
     "release": "pnpm build && pnpm --filter './packages/**' publish"
   },
-  "engines": {
-    "node": ">=18"
-  },
   "devDependencies": {
     "@changesets/cli": "^2.26.2"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

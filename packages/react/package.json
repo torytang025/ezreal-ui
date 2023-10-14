@@ -1,6 +1,11 @@
 {
   "name": "@ezreal-ui/react",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/torytang025/ezreal-ui.git",
+    "directory": "packages/token"
+  },
   "author": "torytang <torytang.025@gmail.com> (https://torytang.com)",
   "type": "module",
   "exports": {
