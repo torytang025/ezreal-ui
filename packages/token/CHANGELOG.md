@@ -1,17 +1,10 @@
-# @ezreal-ui/token
+# @ezreal-ui/react
 
 ## 0.0.1
 
 ### Patch Changes
 
-- ## Setup Project
-
-  ### @ezreal-ui/react
-
-  - Add component sample: Button;
-  - Add @ezreal--ui/token and use tokens from this in Button Component;
-
-  ### @ezreal-ui/token
+- Setup Project
 
   - Write basic token json files;
   - Compile token .json to .less and export it;
