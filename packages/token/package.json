@@ -17,8 +17,10 @@
     "./dist/style"
   ],
   "scripts": {
-    "build": "pnpm run build:token",
-    "build:token": "rm -rf ./dist/* && ts-node --esm ./src/scripts/style-dictionary.ts"
+    "build": "pnpm build:token",
+    "prebuild": "rm -rf ./dist ./src/style/*",
+    "postbuild": "mkdir dist && cp -R ./src/style/* ./dist",
+    "build:token": "ts-node --esm ./src/scripts/style-dictionary.ts"
   },
   "devDependencies": {
     "@types/node": "^20.8.2",

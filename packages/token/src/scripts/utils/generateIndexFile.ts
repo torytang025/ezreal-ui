@@ -22,7 +22,7 @@ function genContent(path: string, files: string[]) {
 
 function generatIndexFile() {
   const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
-  const outputPath = path.resolve(__dirname, "../../../dist");
+  const outputPath = path.resolve(__dirname, "../../style");
   const themeFolderPath = `${outputPath}/theme`;
   const componentsFolderPath = `${outputPath}/components`;
   const theme = globSync(`${themeFolderPath}/*.less`);

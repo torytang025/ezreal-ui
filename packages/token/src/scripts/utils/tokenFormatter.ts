@@ -29,35 +29,6 @@ const sysColorFormatter: Formatter = ({ dictionary, options = {}, file }) => {
   }\n\n${selector} {\n${lightCssVariables}\n}\n\n${selector}[ezreal-theme="dark"] {\n${darkCssVariables}\n}\n`;
 };
 
-const sysElevationFormatter: Formatter = ({
-  dictionary,
-  options = {},
-  file,
-}) => {
-  const selector = options.selector ? options.selector : `:root`;
-  const { outputReferences, formatting, fileImport } = options;
-  const header = fileHeader({ file });
-  const lightCssVariables = formattedVariables({
-    format: "css",
-    dictionary,
-    outputReferences,
-    formatting,
-    filterOutput: (token) =>
-      token.trim().startsWith("--ezreal-sys-elevation-light"),
-  }).replace(/\-light/g, "");
-  const darkCssVariables = formattedVariables({
-    format: "css",
-    dictionary,
-    outputReferences,
-    formatting,
-    filterOutput: (token) =>
-      token.trim().startsWith("--ezreal-sys-elevation-dark"),
-  }).replace(/\-dark/g, "");
-  return `${header}${
-    fileImport ?? ""
-  }\n\n${selector} {\n${lightCssVariables}\n}\n\n${selector}[ezreal-theme="dark"] {\n${darkCssVariables}\n}\n`;
-};
-
 const componentFormatter: Formatter = ({ dictionary, options = {}, file }) => {
   const selector = options.selector ? options.selector : `:root`;
   const { outputReferences, formatting, filterOutput, fileImport } = options;
@@ -74,4 +45,4 @@ const componentFormatter: Formatter = ({ dictionary, options = {}, file }) => {
   return `${header}${fileImport ?? ""}\n\n${selector} {\n${cssVariables}\n}\n`;
 };
 
-export { componentFormatter, sysColorFormatter, sysElevationFormatter };
+export { componentFormatter, sysColorFormatter };

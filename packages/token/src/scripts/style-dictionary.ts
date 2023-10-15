@@ -10,10 +10,10 @@ import { generatIndexFile } from "./utils/generateIndexFile.ts";
 import {
   componentFormatter,
   sysColorFormatter,
-  sysElevationFormatter,
 } from "./utils/tokenFormatter.ts";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
+const outputPath = path.resolve(__dirname, "../style");
 const tokenPath = path.resolve(__dirname, "../tokens");
 const componentTokenFiles = globSync(`${tokenPath}/components/*.json`);
 const coreTokenFiles = globSync(`${tokenPath}/core/*.json`);
@@ -273,28 +273,6 @@ StyleDictionary.registerFormat({
   formatter: sysColorFormatter,
 });
 
-/**
- * Split system elevation token into light and dark modes
- *
- * ```css
- * body {
- *   --ezreal-sys-elevation-low: 0px 1px 16px 1px #0000000a, 0px 0px 1px 0px #00000014;
- *   --ezreal-sys-elevation-medium: 0px 1px 16px 2px #1b1c1f1a, 0px 0px 1px 0px #1b1c1f0a;
- *   --ezreal-sys-elevation-high: 0px 1px 24px 0px #0000001f, 0px 0px 40px 3px #0000000f;
- * }
- *
- * body[ezreal-theme="dark"] {
- *   --ezreal-sys-elevation-low: 0px 1px 24px 0px #0000000a, 0px 0px 2px 1px #0000003d;
- *   --ezreal-sys-elevation-medium: 0px 1px 12px 0px #00000014, 0px 0px 1px 2px #0000001f;
- *   --ezreal-sys-elevation-high: 0px 1px 3px 0px #0000004d, 0px 0px 8px 3px #00000026;
- * }
- * ```
- */
-StyleDictionary.registerFormat({
-  name: "sysElevationFormat",
-  formatter: sysElevationFormatter,
-});
-
 const DEFAULT_TRANSFORMS = [
   "attribute/cti",
   "name/cti/kebab",
@@ -326,7 +304,7 @@ function getThemeStyleDictionaryConfig({
     platforms: {
       css: {
         transforms: DEFAULT_TRANSFORMS,
-        buildPath: "dist/theme/",
+        buildPath: `${outputPath}/theme/`,
         files: [
           {
             destination: `${fileName}.less`,
@@ -359,7 +337,7 @@ function getCompStyleDictionaryConfig(themePath: string): Config {
     platforms: {
       css: {
         transforms: DEFAULT_TRANSFORMS,
-        buildPath: "dist/components/",
+        buildPath: `${outputPath}/components/`,
         files: [
           {
             destination: `${componentName}.less`,
@@ -450,10 +428,6 @@ const themeFile = [
     fileName: "sys-color",
     fileImport: `@import "./ref-palette.less";`,
     format: "sysColorFormat",
-  },
-  {
-    fileName: "sys-elevation",
-    format: "sysElevationFormat",
   },
 ];
 
