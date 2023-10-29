@@ -11,6 +11,9 @@ const meta: Meta<typeof Button> = {
       options: ["filled", "outlined"],
       defaultValue: "filled",
     },
+    disabled: {
+      control: "boolean",
+    },
   },
   args: {
     type: "filled",

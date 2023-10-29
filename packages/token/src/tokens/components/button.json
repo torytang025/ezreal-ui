@@ -6,11 +6,19 @@
           "default": {
             "value": "{sys.color.light.on-primary}",
             "type": "color"
+          },
+          "disabled": {
+            "value": "{sys.color.light.on-primary}",
+            "type": "color"
           }
         },
         "bg": {
           "default": {
             "value": "{sys.color.light.primary}",
+            "type": "color"
+          },
+          "disabled": {
+            "value": "{sys.color.light.primary-container}",
             "type": "color"
           }
         }
@@ -36,10 +44,18 @@
           "default": {
             "value": "{sys.color.light.primary}",
             "type": "color"
+          },
+          "disabled": {
+            "value": "{sys.color.light.primary-container}",
+            "type": "color"
           }
         },
         "bg": {
           "default": {
+            "value": "{ref.palette.transparent}",
+            "type": "color"
+          },
+          "disabled": {
             "value": "{ref.palette.transparent}",
             "type": "color"
           }
@@ -47,6 +63,10 @@
         "border": {
           "default": {
             "value": "{sys.color.light.primary}",
+            "type": "color"
+          },
+          "disabled": {
+            "value": "{sys.color.light.primary-container}",
             "type": "color"
           }
         }

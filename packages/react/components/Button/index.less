@@ -6,7 +6,12 @@
 @status: default, disabled;
 
 .@{btn-cls-prefix} {
+  cursor: pointer;
   font-size: 16px;
+}
+
+.@{btn-cls-prefix}.@{btn-cls-prefix}-disabled {
+  cursor: not-allowed;
 }
 
 each(@types, .(@t) {
@@ -14,7 +19,7 @@ each(@types, .(@t) {
     .@{btn-cls-prefix}.@{btn-cls-prefix}-@{t}.@{btn-cls-prefix}-@{s} {
       background-color: rgb(var(~"@{btn-vars-prefix}-@{t}-color-bg-@{s}"));
       color: rgb(var(~"@{btn-vars-prefix}-@{t}-color-text-@{s}"));
-      border: var(~"@{btn-vars-prefix}-@{t}-border-width") solid rgb(var(~"@{btn-vars-prefix}-@{t}-color-border-default"));
+      border: var(~"@{btn-vars-prefix}-@{t}-border-width") solid rgb(var(~"@{btn-vars-prefix}-@{t}-color-border-@{s}"));
       border-radius: var(~"@{btn-vars-prefix}-@{t}-border-radius");
       padding: var(~"@{btn-vars-prefix}-@{t}-padding-y") var(~"@{btn-vars-prefix}-@{t}-padding-x");
     }
