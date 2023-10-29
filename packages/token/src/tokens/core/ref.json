@@ -1,79 +1,167 @@
 {
   "ref": {
     "palette": {
-      "primary": {
-        "primary0": {
+      "blue": {
+        "0": {
           "value": "#000000",
           "type": "color"
         },
-        "primary5": {
-          "value": "#000b3a",
+        "10": {
+          "value": "#001552",
           "type": "color"
         },
-        "primary10": {
-          "value": "#001453",
+        "20": {
+          "value": "#002682",
           "type": "color"
         },
-        "primary15": {
-          "value": "#001c6c",
+        "30": {
+          "value": "#213e9e",
           "type": "color"
         },
-        "primary20": {
-          "value": "#002585",
+        "40": {
+          "value": "#3d57b7",
           "type": "color"
         },
-        "primary25": {
-          "value": "#002e9f",
+        "50": {
+          "value": "#5771d2",
           "type": "color"
         },
-        "primary30": {
-          "value": "#0037b9",
+        "60": {
+          "value": "#728bee",
           "type": "color"
         },
-        "primary35": {
-          "value": "#0040d5",
+        "70": {
+          "value": "#91a7ff",
           "type": "color"
         },
-        "primary40": {
-          "value": "#1d4ee3",
+        "80": {
+          "value": "#b7c4ff",
           "type": "color"
         },
-        "primary50": {
-          "value": "#416afc",
+        "90": {
+          "value": "#dce1ff",
           "type": "color"
         },
-        "primary60": {
-          "value": "#6b89ff",
-          "type": "color"
-        },
-        "primary70": {
-          "value": "#92a6ff",
-          "type": "color"
-        },
-        "primary80": {
-          "value": "#b8c4ff",
-          "type": "color"
-        },
-        "primary90": {
-          "value": "#dde1ff",
-          "type": "color"
-        },
-        "primary95": {
+        "95": {
           "value": "#efefff",
           "type": "color"
         },
-        "primary98": {
-          "value": "#fbf8ff",
-          "type": "color"
-        },
-        "primary99": {
+        "99": {
           "value": "#fefbff",
           "type": "color"
         },
-        "primary100": {
+        "100": {
           "value": "#ffffff",
           "type": "color"
         }
+      },
+      "yellow": {
+        "0": {
+          "value": "#000000",
+          "type": "color"
+        },
+        "10": {
+          "value": "#311300",
+          "type": "color"
+        },
+        "20": {
+          "value": "#512300",
+          "type": "color"
+        },
+        "30": {
+          "value": "#743500",
+          "type": "color"
+        },
+        "40": {
+          "value": "#964909",
+          "type": "color"
+        },
+        "50": {
+          "value": "#b56123",
+          "type": "color"
+        },
+        "60": {
+          "value": "#d4793a",
+          "type": "color"
+        },
+        "70": {
+          "value": "#f49351",
+          "type": "color"
+        },
+        "80": {
+          "value": "#ffb689",
+          "type": "color"
+        },
+        "90": {
+          "value": "#ffdbc8",
+          "type": "color"
+        },
+        "95": {
+          "value": "#ffede5",
+          "type": "color"
+        },
+        "99": {
+          "value": "#fffbff",
+          "type": "color"
+        },
+        "100": {
+          "value": "#ffffff",
+          "type": "color"
+        }
+      },
+      "white": {
+        "value": "#FAFAFA",
+        "type": "color"
+      },
+      "black": {
+        "value": "#424242",
+        "type": "color"
+      },
+      "transparent": {
+        "value": "#00000000",
+        "type": "color"
+      }
+    },
+    "spacing": {
+      "spacing4": {
+        "value": "4",
+        "type": "spacing"
+      },
+      "spacing8": {
+        "value": "8",
+        "type": "spacing"
+      },
+      "spacing16": {
+        "value": "16",
+        "type": "spacing"
+      }
+    },
+    "border-radius": {
+      "corner4": {
+        "value": "4",
+        "type": "borderRadius"
+      },
+      "corner8": {
+        "value": "8",
+        "type": "borderRadius"
+      },
+      "corner16": {
+        "value": "16",
+        "type": "borderRadius"
+      }
+    },
+    "border-width": {
+      "width1": {
+        "value": "1",
+        "type": "borderWidth"
+      },
+      "width2": {
+        "value": "2",
+        "type": "borderWidth"
+      },
+      "width4": {
+        "value": "4",
+        "type": "borderWidth"
       }
     }
   }

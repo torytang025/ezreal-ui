@@ -14,6 +14,20 @@
             "type": "color"
           }
         }
+      },
+      "padding": {
+        "x": {
+          "value": "{sys.spacing.l}",
+          "type": "spacing"
+        },
+        "y": {
+          "value": "{sys.spacing.m}",
+          "type": "spacing"
+        }
+      },
+      "borderRadius": {
+        "value": "{sys.border-radius.m}",
+        "type": "borderRadius"
       }
     },
     "outlined": {
@@ -26,10 +40,34 @@
         },
         "bg": {
           "default": {
-            "value": "transparent",
+            "value": "{ref.palette.transparent}",
+            "type": "color"
+          }
+        },
+        "border": {
+          "default": {
+            "value": "{sys.color.light.primary}",
             "type": "color"
           }
         }
+      },
+      "borderRadius": {
+        "value": "{sys.border-radius.m}",
+        "type": "borderRadius"
+      },
+      "padding": {
+        "x": {
+          "value": "{sys.spacing.l}",
+          "type": "spacing"
+        },
+        "y": {
+          "value": "{sys.spacing.m}",
+          "type": "spacing"
+        }
+      },
+      "border-width": {
+        "value": "{sys.border-width.thin}",
+        "type": "borderWidth"
       }
     }
   }

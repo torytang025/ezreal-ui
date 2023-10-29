@@ -25,19 +25,8 @@ const EZREAL_THEME_TAG = "body";
 const EZREAL_PREFIX = "ezreal";
 const SIZE_UNIT = "px";
 const numberRegex = /^\d+$/;
-const typefaceTokenArr = [
-  "fontFamily",
-  "lineHeight",
-  "fontWeight",
-  "fontSize",
-  "letterSpacing",
-];
-const dimensionTokenArr = [
-  "lineHeights",
-  "spacing",
-  "borderRadius",
-  "fontSizes",
-];
+const dimensionTokenArr = ["spacing", "borderRadius"];
+const shapeAttributes = ["borderRadius", "borderWidth"];
 
 /**
  * Helper: Append custom header
@@ -63,27 +52,6 @@ StyleDictionary.registerTransform({
   transformer: (token) => {
     const value = token.original.value;
     return value + SIZE_UNIT;
-  },
-});
-
-/**
- * Helper: Transforms letter spacing decimal/% to em
- */
-StyleDictionary.registerTransform({
-  type: "value",
-  transitive: true,
-  name: "transformLetterSpacing",
-  matcher: (token) => {
-    const { type, category } = token.attributes;
-    return type === "letterSpacing" && category === "ref";
-  },
-  transformer: (token) => {
-    const value = token.original.value;
-    // if (value.endsWith("%")) {
-    //   const percentValue = value.slice(0, -1);
-    //   return `${percentValue / 100}em`;
-    // }
-    return `${value}px`;
   },
 });
 
@@ -134,73 +102,6 @@ StyleDictionary.registerTransform({
 });
 
 /**
- * Helper: Transforms boxShadow object to shadow shorthand
- * [
-    {
-        "color":"#0000001f",
-        "type":"dropShadow",
-        "x":"0",
-        "y":"1",
-        "blur":"24",
-        "spread":"0"
-    },
-    {
-        "color":"#0000000f",
-        "type":"dropShadow",
-        "x":"0",
-        "y":"0",
-        "blur":"40",
-        "spread":"3"
-    }
-  ]
-  =>
-  0px 1px 24px 0px #0000001f, 0px 0px 40px 3px #0000000f
- */
-StyleDictionary.registerTransform({
-  type: "value",
-  transitive: true,
-  name: "transformBoxShadow",
-  matcher: (token) => {
-    const {
-      attributes: { category },
-      type,
-    } = token;
-    return category === "sys" && type === "boxShadow";
-  },
-  transformer: (token) => {
-    const value = token.original.value;
-    const boxShadowArr = value.map((shadow) => {
-      let { x, y, blur, spread } = shadow;
-      const { color } = shadow;
-      x += SIZE_UNIT;
-      y += SIZE_UNIT;
-      blur += SIZE_UNIT;
-      spread += SIZE_UNIT;
-      return `${x} ${y} ${blur} ${spread} ${color}`;
-    });
-    return boxShadowArr.join(", ");
-  },
-});
-
-/**
- * Helper: Transforms font-family
- * lowerCase reference token value
- */
-StyleDictionary.registerTransform({
-  type: "value",
-  transitive: true,
-  name: "lowerCaseFontFamilies",
-  matcher: (token) => {
-    const isRefToken =
-      token.attributes.category === "ref" || token.path.includes("ref");
-    return isRefToken && token.type === "fontFamilies";
-  },
-  transformer: (token) => {
-    return token.original.value.toLocaleLowerCase();
-  },
-});
-
-/**
  * Helper: Transforms color to r,g,b format
  * e.g. #1d4ee3 to 29,78,227
  */
@@ -214,8 +115,8 @@ StyleDictionary.registerTransform({
   },
   transformer: (token) => {
     const color = tinycolor(token.original.value);
-    const { r, g, b } = color.toRgb();
-    return [r, g, b].join(",");
+    const { r, g, b, a } = color.toRgb();
+    return [r, g, b, a].join(",");
   },
 });
 
@@ -279,9 +180,6 @@ const DEFAULT_TRANSFORMS = [
   "color/css",
   "transformDimension",
   "transformPalette2Rgb",
-  "transformLetterSpacing",
-  "lowerCaseFontFamilies",
-  "transformBoxShadow",
   "transformBorderRadius",
   "transformBorderWidth",
 ];
@@ -366,32 +264,42 @@ function getCompStyleDictionaryConfig(themePath: string): Config {
 const themeFile = [
   {
     fileName: "ref-palette",
-    // transform filter
     filter: (token) => {
       const { category, type } = token.attributes;
       return category === "ref" && type === "palette";
     },
   },
   {
-    fileName: "ref-typeface",
+    fileName: "ref-spacing",
     filter: (token) => {
       const { category, type } = token.attributes;
-      return category === "ref" && typefaceTokenArr.includes(type);
+      return category === "ref" && type === "spacing";
     },
   },
   {
-    fileName: "sys-shape",
+    fileName: "ref-shape",
     filter: (token) => {
       const { category } = token.attributes;
       const {
         original: { type },
       } = token;
-      const shapeAttributes = ["borderRadius", "borderWidth"];
+      return category === "ref" && shapeAttributes.includes(type);
+    },
+  },
+  {
+    fileName: "sys-shape",
+    fileImport: `@import "./ref-shape.less";`,
+    filter: (token) => {
+      const { category } = token.attributes;
+      const {
+        original: { type },
+      } = token;
       return category === "sys" && shapeAttributes.includes(type);
     },
   },
   {
     fileName: "sys-spacing",
+    fileImport: `@import "./ref-spacing.less";`,
     filter: (token) => {
       const { category } = token.attributes;
       const {
@@ -399,30 +307,6 @@ const themeFile = [
       } = token;
       return category === "sys" && type === "spacing";
     },
-  },
-  {
-    fileName: "sys-state",
-    filter: (token) => {
-      const { category } = token.attributes;
-      const {
-        original: { type },
-      } = token;
-      return category === "sys" && type === "opacity";
-    },
-  },
-  {
-    fileName: "sys-typography",
-    filter: (token) => {
-      const { type, state } = token.attributes;
-      return (
-        typefaceTokenArr.includes(type) ||
-        (type === "typography" && typefaceTokenArr.includes(state))
-      );
-    },
-    filterOutput: (token) => {
-      return token.trim().startsWith("--ezreal-sys-typography");
-    },
-    fileImport: `@import "./ref-typeface.less";`,
   },
   {
     fileName: "sys-color",
