@@ -9,7 +9,11 @@ const meta: Meta<typeof Button> = {
     type: {
       control: "inline-radio",
       options: ["filled", "outlined"],
+      defaultValue: "filled",
     },
+  },
+  args: {
+    type: "filled",
   },
 };
 
@@ -17,5 +21,5 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Basic: Story = {
-  render: (args) => <Button {...args}>button</Button>,
+  render: (args) => <Button {...args}>Button</Button>,
 };
