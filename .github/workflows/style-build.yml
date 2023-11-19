@@ -12,6 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Check last commit message
+        run: |
+          message=$(git log -1 --pretty=%B)
+          if [[ $message != "design:"* ]]; then
+            echo "Last commit message does not start with 'design:', skipping workflow."
+            echo "::error::Skipping due to commit message"
+          fi
+
       - name: Install pnpm
         run: |
           curl -L https://unpkg.com/@pnpm/self-installer | node
@@ -25,6 +33,11 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install
+
+      - name: Prebuild
+        run: |
+          cd packages/token
+          pnpm prebuild:figma
 
       - name: Build
         run: |
