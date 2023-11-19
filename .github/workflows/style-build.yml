@@ -5,6 +5,9 @@ on:
     branches:
       - "feature/*"
 
+permissions:
+  contents: write
+
 jobs:
   style-build:
     runs-on: ubuntu-latest
@@ -56,6 +59,4 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git diff --quiet && git diff --staged --quiet || (git add . && git commit -m "[CI] build: build token")
-          git push origin "${GITHUB_REF#refs/heads/}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git push
