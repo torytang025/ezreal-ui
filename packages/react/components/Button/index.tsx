@@ -18,7 +18,7 @@ function Button(props: ButtonProps, ref: React.LegacyRef<HTMLButtonElement>) {
       [`${prefix}-default`]: !disabled,
       [`${prefix}-disabled`]: disabled,
     },
-    className
+    className,
   );
 
   return (

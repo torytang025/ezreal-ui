@@ -12,7 +12,7 @@ function genContent(path: string, files: string[]) {
    *
    ${WARNING_FILE_HEADER}
    */\n\n\n
-  `
+  `,
   );
   files.forEach((f) => {
     const p = f.split("/").pop();
@@ -43,7 +43,7 @@ function generatIndexFile() {
 
       @prefix: ezreal;
       @ezreal-vars-prefix: ~"--@{prefix}";
-  `
+  `,
   );
 }
 
