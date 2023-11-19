@@ -1,4 +1,4 @@
-name: feature-development
+name: style-build
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - "feature/*"
 
 jobs:
-  install_dependencies:
+  style-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,24 +20,10 @@ jobs:
         run: |
           pnpm install
 
-  build:
-    needs: install_dependencies
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
       - name: Build
         run: |
           cd packages/token
           pnpm build
-
-  commit:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
 
       - name: Commit
         run: |
