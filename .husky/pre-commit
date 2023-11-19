@@ -2,4 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # prettier all files that changed in the last commit
-npx prettier --write $(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|json|ts|tsx|md|html|css|scss)$')
+npx prettier --write $(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|jsx|json|ts|tsx|md|html|css|scss)$' | xargs -I{} sh -c '[ -e "{}" ] && echo "{}"') --parser babel
