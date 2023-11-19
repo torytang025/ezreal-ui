@@ -6,7 +6,7 @@ on:
       - "feature/*"
 
 jobs:
-  build:
+  install_dependencies:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,17 +20,30 @@ jobs:
         run: |
           pnpm install
 
+  build:
+    needs: install_dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
       - name: Build
         run: |
           cd packages/token
           pnpm build
 
+  commit:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
       - name: Commit
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add .
-          git commit -m "[CI] build: build token"
+          git diff --quiet && git diff --staged --quiet || (git add . && git commit -m "[CI] build: build token")
 
       # push changes
       - name: Push changes
