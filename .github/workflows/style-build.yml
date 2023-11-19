@@ -18,6 +18,7 @@ jobs:
           if [[ $message != "design:"* ]]; then
             echo "Last commit message does not start with 'design:', skipping workflow."
             echo "::error::Skipping due to commit message"
+            exit 1
           fi
 
       - name: Install pnpm
