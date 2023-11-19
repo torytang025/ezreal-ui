@@ -15,10 +15,19 @@ if (!fs.existsSync(cachePath)) {
   process.exit(1);
 }
 
-// clear corePath files and compPath files
-console.log("🗑️ Clear exist files");
-fs.rmSync(corePath, { recursive: true });
-fs.rmSync(compPath, { recursive: true });
+// Clear files under corePath
+fs.readdirSync(corePath).forEach((file) => {
+  fs.unlinkSync(path.join(corePath, file));
+});
+
+console.log("🗑️ Core path cleared");
+
+// Clear files under compPath
+fs.readdirSync(compPath).forEach((file) => {
+  fs.unlinkSync(path.join(compPath, file));
+});
+
+console.log("🗑️ Comp path cleared");
 
 console.log("📦 Generating token files...");
 
