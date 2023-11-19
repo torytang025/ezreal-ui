@@ -7,14 +7,15 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const tokenPath = path.resolve(__dirname, "../tokens");
 const cachePath = path.resolve(tokenPath, "./cache/cache.json");
 
-const cacheData = fs.readFileSync(cachePath, "utf8");
-
-if (!cacheData) {
-  throw new Error("⛔️ Cache data is empty");
+// check if cache file exists
+if (!fs.existsSync(cachePath)) {
+  console.log("❌ Cache file not found");
+  process.exit(1);
 }
 
 console.log("📦 Generating token files...");
 
+const cacheData = fs.readFileSync(cachePath, "utf8");
 const cache = JSON.parse(cacheData);
 const ref = cache.ref;
 const sys = cache.sys;
@@ -56,3 +57,6 @@ for (const key of componentKeys) {
 }
 
 console.log("🎉 Token files generated");
+
+// delete cache dir
+fs.rmSync(path.resolve(tokenPath, "./cache"), { recursive: true });
