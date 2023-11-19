@@ -2,7 +2,7 @@ import { useMemo } from "react";
 
 export default function useMergeProps<PropsType>(
   componentProps: PropsType,
-  defaultProps: Partial<PropsType>
+  defaultProps: Partial<PropsType>,
 ): PropsType {
   const props = useMemo(() => {
     for (const propName in defaultProps) {
