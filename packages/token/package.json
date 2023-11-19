@@ -20,7 +20,8 @@
     "build": "pnpm build:token",
     "prebuild": "rm -rf ./dist ./src/style/*",
     "postbuild": "mkdir dist && cp -R ./src/style/* ./dist",
-    "build:token": "ts-node --esm ./src/scripts/style-dictionary.ts"
+    "build:token": "ts-node --esm ./src/scripts/style-dictionary.ts",
+    "prebuild:figma": "ts-node --esm ./src/scripts/prebuild-for-figma.ts"
   },
   "devDependencies": {
     "@types/node": "^20.8.2",
