@@ -73,6 +73,3 @@ for (const key of componentKeys) {
 }
 
 console.log("🎉 Token files generated");
-
-// delete cache dir
-fs.rmSync(path.resolve(tokenPath, "./cache"), { recursive: true });
