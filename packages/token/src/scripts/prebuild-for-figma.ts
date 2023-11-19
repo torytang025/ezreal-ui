@@ -5,6 +5,8 @@ import * as url from "url";
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const tokenPath = path.resolve(__dirname, "../tokens");
+const corePath = path.resolve(tokenPath, "./core");
+const compPath = path.resolve(tokenPath, "./components");
 const cachePath = path.resolve(tokenPath, "./cache/cache.json");
 
 // check if cache file exists
@@ -12,6 +14,11 @@ if (!fs.existsSync(cachePath)) {
   console.log("❌ Cache file not found");
   process.exit(1);
 }
+
+// clear corePath files and compPath files
+console.log("🗑️ Clear exist files");
+fs.rmSync(corePath, { recursive: true });
+fs.rmSync(compPath, { recursive: true });
 
 console.log("📦 Generating token files...");
 
@@ -21,8 +28,8 @@ const ref = cache.ref;
 const sys = cache.sys;
 const comp = cache.comp;
 
-const refPath = path.resolve(tokenPath, "./core/ref.json");
-const sysPath = path.resolve(tokenPath, "./core/sys.json");
+const refPath = path.resolve(corePath, "./ref.json");
+const sysPath = path.resolve(corePath, "./sys.json");
 
 fs.writeFileSync(
   refPath,
@@ -41,13 +48,13 @@ console.log("✅ Sys file generated");
 const componentKeys = Object.keys(comp);
 
 for (const key of componentKeys) {
-  const compPath = path.resolve(tokenPath, `./components/${key}.json`);
+  const compTokenPath = path.resolve(compPath, `./${key}.json`);
   const compData = {
     [key]: comp[key],
   };
 
   fs.writeFileSync(
-    compPath,
+    compTokenPath,
     await prettier.format(JSON.stringify(compData, null, 2), {
       parser: "json",
     }),

@@ -1,13 +1,12 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# run these cmd only if packages/token changed
-git diff --quiet HEAD@{1} HEAD packages/token
-if [ $? -ne 0 ]; then
-  echo "📦 packages/token changed, building..."
-  cd packages/token
-  pnpm run build
-else
-  echo "packages/token not changed, skipping build"
+# Run these commands only if packages/token changed
+if git diff --quiet HEAD@{1} HEAD packages/token; then
+  echo "📦 packages/token not changed, skipping build"
   exit 0
 fi
+
+echo "📦 packages/token changed, building..."
+cd packages/token
+pnpm run build
