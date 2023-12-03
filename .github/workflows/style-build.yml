@@ -70,4 +70,4 @@ jobs:
           commit_hash=$(git rev-parse --short HEAD)
           version="0.0.0-alpha.$commit_hash"
           pnpm version $version --no-git-tag-version
-          pnpm publish --access public --tag alpha
+          pnpm publish --access public --tag alpha --no-git-checks
