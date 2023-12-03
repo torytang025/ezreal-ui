@@ -60,3 +60,14 @@ jobs:
           git config --global user.email "actions@github.com"
           git diff --quiet && git diff --staged --quiet || (git add . && git commit -m "[CI] build: build token")
           git push
+
+      - name: Setup .npmrc file to publish to npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Publish alpha package
+        run: |
+          cd packages/token
+          commit_hash=$(git rev-parse --short HEAD)
+          version="0.0.0-alpha.$commit_hash"
+          pnpm version $version --no-git-tag-version
+          pnpm publish --access public --tag alpha --no-git-checks
