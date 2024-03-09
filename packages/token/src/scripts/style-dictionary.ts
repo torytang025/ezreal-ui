@@ -20,7 +20,7 @@ const coreTokenFiles = globSync(`${tokenPath}/core/*.json`);
 
 const { fileHeader } = StyleDictionary.formatHelpers;
 
-// 挂载css variables的html tag
+// HTML tag to mount CSS variables
 const EZREAL_THEME_TAG = "body";
 const EZREAL_PREFIX = "ezreal";
 const SIZE_UNIT = "px";
@@ -261,7 +261,7 @@ function getCompStyleDictionaryConfig(themePath: string): Config {
   };
 }
 
-const themeFile = [
+const coreFile = [
   {
     fileName: "ref-palette",
     filter: (token) => {
@@ -315,7 +315,7 @@ const themeFile = [
   },
 ];
 
-themeFile.map(function (theme) {
+coreFile.map(function (theme) {
   const SD = StyleDictionary.extend(getThemeStyleDictionaryConfig(theme));
   SD.buildAllPlatforms();
 });

@@ -10,6 +10,11 @@
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
  * and limitations under the License.
  */
+
+/**
+ * I rewrite this function, adding a filterOutput to options. see line 37
+ */
+
 import StyleDictionary from "style-dictionary";
 import { createPropertyFormatter } from "./createPropertyFormatter.ts";
 
@@ -29,7 +34,6 @@ const defaultFormatting = {
  * @param {Boolean} options.outputReferences - Whether or not to output references
  * @param {Object} options.formatting - Custom formatting properties that define parts of a declaration line in code. This will get passed to `formatHelpers.createPropertyFormatter` and used for the `lineSeparator` between lines of code.
  * @param {Boolean} options.themeable [false] - Whether tokens should default to being themeable.
- * @param {Function} options.needRgb [false] - Whether tokens should to be processed by the rgb function.
  * @param {Function} options.filterOutput - A function that takes a token and returns a boolean if the token should be included (true) or excluded (false). This is only available if you are defining your configuration in Javascript.
  * @returns {String}
  * @example
@@ -53,7 +57,6 @@ function formattedVariables({
   formatting = {},
   themeable = false,
   filterOutput,
-  needRgb = () => false,
 }) {
   let { allTokens } = dictionary;
 
@@ -77,7 +80,6 @@ function formattedVariables({
     format,
     formatting,
     themeable,
-    needRgb,
   });
 
   if (!filterOutput) {

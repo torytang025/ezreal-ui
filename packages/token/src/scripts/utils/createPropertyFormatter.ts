@@ -11,6 +11,10 @@
  * and limitations under the License.
  */
 
+/**
+ * I rewrite this function, see https://github.com/amzn/style-dictionary/issues/941
+ */
+
 import type { Dictionary } from "style-dictionary";
 
 const defaultFormatting = {
@@ -49,7 +53,6 @@ const defaultFormatting = {
  * @param {String} options.format - Available formats are: 'css', 'sass', 'less', and 'stylus'. If you want to customize the format and can't use one of those predefined formats, use the `formatting` option
  * @param {Object} options.formatting - Custom formatting properties that define parts of a declaration line in code. The configurable strings are: prefix, indentation, separator, suffix, and commentStyle. Those are used to generate a line like this: `${indentation}${prefix}${prop.name}${separator} ${prop.value}${suffix}`
  * @param {Boolean} options.themeable [false] - Whether tokens should default to being themeable.
- * @param {Function} options.needRgb [(token) => false] - Whether tokens should to be processed by the rgb function.
  * @returns {Function}
  */
 function createPropertyFormatter({
@@ -59,7 +62,6 @@ function createPropertyFormatter({
   format,
   formatting = {},
   themeable = false,
-  needRgb,
 }: {
   outputReferences?: boolean;
   outputReferenceFallbacks?: boolean;
@@ -67,7 +69,6 @@ function createPropertyFormatter({
   format;
   formatting?: Record<string, string>;
   themeable?: boolean;
-  needRgb?: (props) => boolean;
 }) {
   switch (format) {
     case "css":
@@ -133,13 +134,9 @@ function createPropertyFormatter({
             value = value.replace(ref.value, function () {
               if (format === "css") {
                 if (outputReferenceFallbacks) {
-                  return needRgb?.(prop)
-                    ? `rgb(var(${prefix}${ref.name}, ${ref.value}))`
-                    : `var(${prefix}${ref.name}, ${ref.value})`;
+                  return `var(${prefix}${ref.name}, ${ref.value})`;
                 }
-                return needRgb?.(prop)
-                  ? `rgb(var(${prefix}${ref.name}))`
-                  : `var(${prefix}${ref.name})`;
+                return `var(${prefix}${ref.name})`;
               }
               return `${prefix}${ref.name}`;
             });
