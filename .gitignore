@@ -27,5 +27,7 @@ node_modules.nosync
 *.sln
 *.sw?
 
-
 tsconfig.tsbuildinfo
+
+# storybook
+storybook-static

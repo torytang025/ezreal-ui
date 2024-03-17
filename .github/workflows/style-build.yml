@@ -1,9 +1,12 @@
-name: style-build
+name: Build style from tokens and publish test package
 
 on:
   push:
     branches:
       - "feature/*"
+      - "feat/*"
+    paths:
+      - "packages/token/src/tokens/cache/**"
 
 permissions:
   contents: write
@@ -13,30 +16,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Check last commit message
-        run: |
-          message=$(git log -1 --pretty=%B)
-          if [[ $message != "design:"* ]]; then
-            echo "Last commit message does not start with 'design:', skipping workflow."
-            echo "::error::Skipping due to commit message"
-            exit 1
-          fi
+      - uses: actions/checkout@v4
 
       - name: Install pnpm
-        run: |
-          curl -L https://unpkg.com/@pnpm/self-installer | node
+        uses: pnpm/action-setup@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
-          cache: "pnpm"
+          node-version: 18
+          cache: pnpm
 
       - name: Install dependencies
-        run: |
-          pnpm install
+        run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Prebuild
         run: |
@@ -58,7 +50,7 @@ jobs:
           fi
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git diff --quiet && git diff --staged --quiet || (git add . && git commit -m "[CI] build: build token")
+          git diff --quiet && git diff --staged --quiet || (git add . && git commit -m "[CI] build token")
           git push
 
       - name: Setup .npmrc file to publish to npm

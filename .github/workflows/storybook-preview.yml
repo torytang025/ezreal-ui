@@ -1,0 +1,49 @@
+name: Deploy Storybook to GitHub Pages
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "packages/**"
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Update token package
+        run: |
+          cd packages/token
+          pnpm prebuild:figma
+          pnpm build
+
+      - name: Build Storybook
+        run: |
+          cd packages/react
+          pnpm run build-storybook
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./packages/react/storybook-static
