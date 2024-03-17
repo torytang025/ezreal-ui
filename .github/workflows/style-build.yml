@@ -25,18 +25,17 @@ jobs:
           fi
 
       - name: Install pnpm
-        run: |
-          curl -L https://unpkg.com/@pnpm/self-installer | node
+        uses: pnpm/action-setup@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
-          cache: "pnpm"
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+          cache: pnpm
 
       - name: Install dependencies
-        run: |
-          pnpm install
+        run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Prebuild
         run: |
