@@ -28,7 +28,14 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --filter=@ezreal-ui/react --frozen-lockfile --prefer-offline
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Check token package
+        if: ${{ github.event_name == 'pull_request' && contains(github.event.pull_request.changed_files, 'packages/token/src/tokens/cache') }}
+        run: |
+          cd packages/token
+          pnpm prebuild:figma
+          pnpm build
 
       - name: Build Storybook
         run: |
