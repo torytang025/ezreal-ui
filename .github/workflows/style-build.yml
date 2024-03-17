@@ -1,10 +1,12 @@
-name: style-build
+name: Build style from tokens and publish test package
 
 on:
   push:
     branches:
       - "feature/*"
       - "feat/*"
+    paths:
+      - "packages/token/src/tokens/cache/**"
 
 permissions:
   contents: write
@@ -15,15 +17,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Check last commit message
-        run: |
-          message=$(git log -1 --pretty=%B)
-          if [[ $message != "design:"* ]]; then
-            echo "Last commit message does not start with 'design:', skipping workflow."
-            echo "::error::Skipping due to commit message"
-            exit 1
-          fi
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
