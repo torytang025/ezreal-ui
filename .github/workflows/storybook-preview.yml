@@ -33,7 +33,13 @@ jobs:
         run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Check token package
-        if: ${{ github.event_name == 'pull_request' && contains(github.event.pull_request.changed_files, 'packages/token/src/tokens/cache') }}
+        id: check
+        run: |
+          echo "::set-output name=changed::$(echo '${{ github.event.pull_request.changed_files }}' | jq -r '.[] | select(startswith("packages/token/src/tokens/cache/"))')"
+        shell: bash
+
+      - name: Run if changed
+        if: steps.check.outputs.changed != ''
         run: |
           cd packages/token
           pnpm prebuild:figma
