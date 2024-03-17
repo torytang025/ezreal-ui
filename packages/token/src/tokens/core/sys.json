@@ -3,7 +3,7 @@
     "color": {
       "light": {
         "primary": {
-          "value": "{ref.palette.blue.40}",
+          "value": "{ref.palette.blue.0}",
           "type": "color"
         },
         "on-primary": {
