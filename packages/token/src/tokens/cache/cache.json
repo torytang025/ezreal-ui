@@ -172,7 +172,7 @@
       "color": {
         "light": {
           "primary": {
-            "value": "{ref.palette.blue.0}",
+            "value": "{ref.palette.blue.40}",
             "type": "color"
           },
           "on-primary": {
