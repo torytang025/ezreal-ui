@@ -1,5 +1,11 @@
 # @ezreal-ui/react
 
+## 0.0.4
+
+### Patch Changes
+
+- 24c7075: Finish demo
+
 ## 0.0.3
 
 ### Patch Changes

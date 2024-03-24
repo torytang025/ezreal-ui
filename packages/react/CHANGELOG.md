@@ -1,5 +1,13 @@
 # @ezreal-ui/react
 
+## 0.0.4
+
+### Patch Changes
+
+- 24c7075: Finish demo
+- Updated dependencies [24c7075]
+  - @ezreal-ui/token@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes
