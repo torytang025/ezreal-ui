@@ -13,7 +13,7 @@
   "scripts": {
     "build": "pnpm --filter './packages/**' build",
     "prepare": "husky install",
-    "release": "pnpm build && pnpm --filter './packages/**' publish"
+    "release": "pnpm build && npx changesets publish"
   },
   "lint-staged": {
     "*.{js,css,md}": "prettier --write"
