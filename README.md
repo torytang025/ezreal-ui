@@ -2,9 +2,9 @@
 
 A demo UI component lib designing with style token system.
 
-## What is the Token System?
+## What is the Design Token System?
 
-A token system is an approach to abstracting, structuring, and organizing visual styles using tokens.
+A Design token system is an approach to abstracting, structuring, and organizing visual styles using design tokens.
 
 The token system has three layers: reference tokens, system tokens, and component tokens, which are organized hierarchically to allow for customization at different levels. This system can be leveraged to safely and quickly modify any layers to meet design needs without any side effects.
 
