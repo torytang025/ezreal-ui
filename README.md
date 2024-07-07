@@ -11,7 +11,7 @@ The token system has three layers: reference tokens, system tokens, and componen
 The token system is a very powerful tool that can help quickly connect the workflows of designers and developers while ensuring that the results of design and development remain consistent. It reduces the cost of communication and manual checks.
 
 Here is the workflow I designed:
-![workflow](./images/CI&CD%20workflow.png)
+![image](https://github.com/torytang025/ezreal-ui/assets/66199492/0d376629-9d50-4ad4-9188-6dec2185d0fc)
 
 ## Relevant Posts
 
