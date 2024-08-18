@@ -8,7 +8,7 @@ A Design token system is an approach to abstracting, structuring, and organizing
 
 The token system has three layers: reference tokens, system tokens, and component tokens, which are organized hierarchically to allow for customization at different levels. This system can be leveraged to safely and quickly modify any layers to meet design needs without any side effects.
 
-The token system is a very powerful tool that can help quickly connect the workflows of designers and developers while ensuring that the results of design and development remain consistent. It reduces the cost of communication and manual checks.
+I designed a workflow with design token system, which is a very powerful tool that can help quickly connect designers and developers while ensuring that the results of design and development remain consistent. It reduces the cost of communication and manual checks.
 
 Here is the workflow I designed:
 ![image](https://github.com/torytang025/ezreal-ui/assets/66199492/0d376629-9d50-4ad4-9188-6dec2185d0fc)
